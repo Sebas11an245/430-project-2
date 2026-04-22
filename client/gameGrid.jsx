@@ -1,24 +1,27 @@
 import React from 'react';
 
-const GameGrid = ({ user, games }) => {
-  if (!user || !games) return <div className="loading">Loading games...</div>;
+const GameGrid = ({ user, games = [] }) => {
+  if (!user) return <div className="loading">Loading user...</div>;
 
-  const allowedGames = user.premium ? games : games.slice(0, 2);
+  const safeGames = Array.isArray(games) ? games : [];
+
+  const allowedGames = user.premium
+    ? safeGames
+    : safeGames.slice(0, 2);
 
   const isLocked = (gameId) => {
     if (user.premium) return false;
-    return !allowedGames.find(g => g.id === gameId);
+    return !allowedGames.some(g => g.id === gameId);
   };
 
   const handlePlay = (game) => {
     console.log("Launching game:", game.id);
-    // later: navigate or open game canvas
   };
 
   return (
     <div className="gridWrapper">
 
-      {/* HEADER BAR */}
+      {/* HEADER */}
       <div className="gridHeader">
         <h2>🎮 Game Library</h2>
 
@@ -31,27 +34,23 @@ const GameGrid = ({ user, games }) => {
         </div>
       </div>
 
-      {/* GAME GRID */}
+      {/* GRID */}
       <div className="gameGrid">
 
-        {games.map((game) => {
+        {safeGames.map((game) => {
           const locked = isLocked(game.id);
 
           return (
             <div key={game.id} className={`gameCard ${locked ? 'locked' : ''}`}>
 
-              {/* BACKGROUND GLOW */}
               <div className="cardGlow"></div>
 
-              {/* GAME TITLE */}
               <h3>{game.name}</h3>
 
-              {/* GAME DESCRIPTION (optional placeholder) */}
               <p className="gameDesc">
                 Fast-paced interactive challenge game.
               </p>
 
-              {/* ACTION AREA */}
               <div className="cardActions">
 
                 {locked ? (
@@ -69,7 +68,6 @@ const GameGrid = ({ user, games }) => {
 
               </div>
 
-              {/* LOCK OVERLAY */}
               {locked && (
                 <div className="lockOverlay">
                   <span>Upgrade to unlock</span>
