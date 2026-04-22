@@ -20,17 +20,13 @@ nav {
     background-color: #55acee;
 }
 
-nav:nth-child(1) {
-    padding-left: 25px;
-}
-
 .navlink {
     padding: 5px;
     padding-top: 12px;
     padding-left: 20px;
     color: white;
     font-size: 1.3em;
-    float: left;
+    float: right;
 }
 
 .navlink a, .navlink a:link, .navlink a:visited, .navlink a:hover, .navlink a:active {
@@ -47,6 +43,9 @@ nav:nth-child(1) {
     background-color: #66bdff;
 }
 
+.navlink button {
+  color: black;
+}
 
 .mainForm {
     height: 300px;
@@ -155,7 +154,7 @@ nav:nth-child(1) {
 
 .gameGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: 1fr 1fr;
   gap: 16px;
 }
 

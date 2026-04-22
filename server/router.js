@@ -19,6 +19,8 @@ const router = (app) => {
     app.get('/leaderboard', controllers.Score.getLeaderboard);
 
     app.post('/upgrade', mid.requiresLogin, controllers.Account.upgrade);
+    app.post('/downgrade', mid.requiresLogin, controllers.Account.downgrade);
+
 
     app.get('/', mid.requiresSecure, mid.requiresLogout, controllers.Account.loginPage);
 };

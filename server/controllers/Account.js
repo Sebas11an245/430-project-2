@@ -73,6 +73,10 @@ const upgrade = (req, res) => {
     return res.json({ premium: true });
 }
 
+const downgrade = (req, res) => {
+    req.session.account.premium = false;
+    return res.json({ premium: false });
+}
 module.exports = {
     loginPage,
     login,
@@ -81,4 +85,5 @@ module.exports = {
     appPage,
     getMe,
     upgrade,
+    downgrade
 };

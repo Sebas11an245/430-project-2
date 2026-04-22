@@ -8,21 +8,7 @@
 </head>
 
 <body>
-  <nav class="mainNav">
-    <a href="/app">
-      <img id="logo" src="/assets/img/controller.png" alt="controller logo" />
-    </a>
-
-    <div class="navLinks">
-      <a href="/leaderboard">Leaderboard</a>
-
-      <button id="premiumBtn" class="premiumBtn">
-        Upgrade to Premium
-      </button>
-
-      <a href="/logout">Log out</a>
-    </div>
-  </nav>
+  
 
 
   <header class="dashboardHeader">
@@ -39,12 +25,13 @@
   </div>
 
 
-  <footer class="bottomNav">
-    <a href="/app">Home</a>
-    <a href="/leaderboard">Leaderboard</a>
-    <a href="/logout">Logout</a>
-  </footer>
-
+<nav><a href="/app"><img id="logo" src="/assets/img/controller.png" alt="controller logo"/></a>
+    <div class="navlink"><a id="logoutButton" href="/logout">Log Out</a></div>
+    <div class="navlink"><a id="leaderboardButton" href="/leaderboard">Leaderboard</a></div>
+    <button class="navlink" id="premiumButton" href="/upgrade">
+        Upgrade to Premium
+      </button>
+  </nav>
   <script src="/assets/appBundle.js"></script>
 </body>
 
