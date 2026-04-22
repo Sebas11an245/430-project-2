@@ -23,7 +23,8 @@ const GameGrid = ({ user, games = [] }) => {
 
       {/* HEADER */}
       <div className="gridHeader">
-        <h2>🎮 Game Library</h2>
+        <h1 >Welcome back!</h1>
+        <p>Choose a game to start playing</p>
 
         <div className="userBadge">
           {user.premium ? (
@@ -43,7 +44,6 @@ const GameGrid = ({ user, games = [] }) => {
           return (
             <div key={game.id} className={`gameCard ${locked ? 'locked' : ''}`}>
 
-              <div className="cardGlow"></div>
 
               <h3>{game.name}</h3>
 

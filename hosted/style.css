@@ -1,141 +1,167 @@
-html, body {
-    height: 100%;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
+html,
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
 }
 
 #logo {
-    height: 40px;
-    width: 40;
-    padding-top: 5px;
-    float:left;
-    border-radius: 8px;
+  height: 40px;
+  width: 40;
+  padding-top: 5px;
+  float: left;
+  border-radius: 8px;
 }
-
 nav {
-    width: 100%;
-    height: 50px;
-    background-color: #55acee;
+  width: 100%;
+  height: 50px;
+  background-color: #89ce94;
 }
 
 .navlink {
-    padding: 5px;
-    padding-top: 12px;
-    padding-left: 20px;
-    color: white;
-    font-size: 1.3em;
-    float: right;
+  padding: 5px;
+  padding-top: 12px;
+  padding-left: 20px;
+  color: white;
+  font-size: 1.3em;
+  float: right;
 }
 
-.navlink a, .navlink a:link, .navlink a:visited, .navlink a:hover, .navlink a:active {
-    color: white;
-    text-decoration: none;
-    padding: 5px;
-    border-radius: 4px;
-    background-color: #55acee;
-    transition: background-color 0.4s ease;
+.navlink a,
+.navlink a:link,
+.navlink a:visited,
+.navlink a:hover,
+.navlink a:active {
+  color: white;
+  text-decoration: none;
+  padding: 5px;
+  border-radius: 4px;
+  background-color: #89ce94;
+  transition: background-color 0.4s ease;
 }
 
 .navlink a:hover {
-    transition: background-color 0.8s ease;
-    background-color: #66bdff;
+  transition: background-color 0.8s ease;
+  background-color: #7ec98a;
 }
 
 .navlink button {
-  color: black;
+  color: white;
+  background-color: #643173;
+  border: none;
+  padding: 4px 8px;
+  color: white;
+  font-size: .9em;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.navlink button:hover{
+  background-color: #7C3D8F;
 }
 
 .mainForm {
-    height: 300px;
-    width: 350px;
-    margin: 0 auto;
-    padding-top: 350px;
-    font-size: 1.2em;
+  height: 300px;
+  width: 350px;
+  margin: 0 auto;
+  padding-top: 350px;
+  font-size: 1.2em;
 }
 
 .mainForm h3 {
-    text-align: center;
+  text-align: center;
 }
 
 .mainForm label {
-    display: inline-block;
-    width: 100px;
-    margin-right: 10px;
-    text-align: right;
-    font-size: 1.2em;
+  display: inline-block;
+  width: 100px;
+  margin-right: 10px;
+  text-align: right;
+  font-size: 1.2em;
 }
 
 .formSubmit {
-    transition: background-color 0.4s ease;
-    display: block;
-    text-align: center;
-    margin: 0 auto;
-    margin-top: 14px;
-    font-size: 1.2em;
-    background-color: #55acee;
-    border-radius: 2px;
-    border-color: #66acee;
-    padding: 3px 0px;
-    color: white;
-    text-decoration: none;
-    padding: 5px;
+  transition: background-color 0.4s ease;
+  display: block;
+  text-align: center;
+  margin: 0 auto;
+  margin-top: 14px;
+  font-size: 1.2em;
+  background-color: #89ce94;
+  border-radius: 2px;
+  border-color: #7ec98a;
+  padding: 3px 0px;
+  color: white;
+  text-decoration: none;
+  padding: 5px;
 }
 
-.formSubmit:link, .formSubmit:visited, .formSubmit:hover, .formSubmit:active {
-    color: white;
+.formSubmit:link,
+.formSubmit:visited,
+.formSubmit:hover,
+.formSubmit:active {
+  color: white;
 }
 
 .formSubmit:hover {
-    transition: background-color 0.4s ease;
-    background-color: #338acc;
+  transition: background-color 0.4s ease;
+  background-color: #7ec98a;
 }
 
-#user, #pass, #pass2 {
-    text-align: center;
-    font-size: 1.1em;
-    width: 180px;
-    border-radius: 6px;
+#user,
+#pass,
+#pass2 {
+  text-align: center;
+  font-size: 1.1em;
+  width: 180px;
+  border-radius: 6px;
 }
 
-#user:focus, #pass:focus, #pass2:focus {
-    outline: none;
-    box-shadow: 0px 0px 1px 1px #55acee;
+#user:focus,
+#pass:focus,
+#pass2:focus {
+  outline: none;
+  box-shadow: 0px 0px 1px 1px #55acee;
 }
 
 .hidden {
-    display: none;
+  display: none;
 }
 
 
 #errorMessage {
-    font-size: 1.2em;
-    font-weight: bold;
-    color: red;
-    font-style: italic;
+  font-size: 1.2em;
+  font-weight: bold;
+  color: red;
+  font-style: italic;
 }
 
 
 .gridWrapper {
   padding: 20px;
   color: white;
-  background: #0f1117;
+  background: #333333;
   min-height: 80vh;
 }
 
 
 .gridHeader {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
   margin-bottom: 20px;
 }
 
-.gridHeader h2 {
-  font-size: 24px;
+.gridHeader h1 {
+  font-size: 2em;
 }
 
+.userBadge {
+float: right;
+}
 
 .premiumBadge {
   background: linear-gradient(135deg, #6a11cb, #2575fc);
@@ -155,12 +181,12 @@ nav {
 .gameGrid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 16px;
+  gap: 64px;
 }
 
 .gameCard {
   position: relative;
-  background: #1a1d25;
+  background: #86a59c;
   border-radius: 12px;
   padding: 16px;
   overflow: hidden;
@@ -170,18 +196,11 @@ nav {
 
 .gameCard:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
 }
 
-.cardGlow {
-  position: absolute;
-  top: -50px;
-  left: -50px;
-  width: 200px;
-  height: 200px;
-  background: radial-gradient(circle, rgba(100,150,255,0.2), transparent);
-  filter: blur(40px);
-  z-index: 0;
+.gameCard h3 {
+  font-size: 2em;
 }
 
 
@@ -193,23 +212,24 @@ nav {
 }
 
 .gameDesc {
-  font-size: 12px;
+  font-size: 1.25em;
   opacity: 0.7;
 }
 
 
 .playBtn {
-  background: #3a86ff;
+  background: #9ad5a4;
   border: none;
   padding: 8px 12px;
   color: white;
+  font-size: 1.25em;
   border-radius: 6px;
   cursor: pointer;
   transition: 0.2s;
 }
 
 .playBtn:hover {
-  background: #265df2;
+  background: #7ec98a;
 }
 
 .lockedBtn {
@@ -231,7 +251,7 @@ nav {
   bottom: 0;
   left: 0;
   right: 0;
-  background: rgba(0,0,0,0.7);
+  background: rgba(0, 0, 0, 0.7);
   padding: 10px;
   font-size: 12px;
   text-align: center;
