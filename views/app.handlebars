@@ -1,0 +1,35 @@
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Daily Challenge Hub</title>
+  <link rel="shortcut icon" href="/assets/img/controller.png" />
+  <link rel="stylesheet" type="text/css" href="/assets/style.css" />
+</head>
+
+<body>
+  <nav><a href="/login"><img id="logo" src="/assets/img/controller.png" alt="controller logo" /></a>
+    <div class="navlink"><a href="/logout">Log out</a></div>
+  </nav>
+  <section id="testPanel" style="padding: 10px; border-bottom: 2px solid #ccc;">
+    <h3>🧪 Backend Test Panel</h3>
+
+    <input id="gameType" placeholder="Game Type" />
+    <input id="score" type="number" placeholder="Score" />
+    <button onclick="submitScore()">Submit Score</button>
+
+    <button onclick="getScores()">Get My Scores</button>
+
+    <input id="leaderGameType" placeholder="Leaderboard Game Type" />
+    <button onclick="getLeaderboard()">Get Leaderboard</button>
+
+    <pre id="output" style="background:#eee; padding:10px;"></pre>
+  </section>
+
+  <section id="app"></section>
+  <h3><span id="errorMessage" class='hidden'></span></h3>
+  </div>
+  <script src="/assets/appBundle.js"></script>
+</body>
+
+</html>
