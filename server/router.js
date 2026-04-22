@@ -2,19 +2,23 @@ const controllers = require('./controllers');
 const mid = require('./middleware');
 
 const router = (app) => {
-    
+
     app.get('/login', mid.requiresSecure, mid.requiresLogout, controllers.Account.loginPage);
     app.post('/login', mid.requiresSecure, mid.requiresLogout, controllers.Account.login);
-
     app.post('/signup', mid.requiresSecure, mid.requiresLogout, controllers.Account.signup);
-
     app.get('/logout', mid.requiresLogin, controllers.Account.logout);
 
     app.get('/app', mid.requiresLogin, controllers.Account.appPage);
 
+    app.get('/me', mid.requiresLogin, controllers.Account.getMe);
+    
+    app.get('/games', mid.requiresLogin, controllers.Game.getGames);
+
     app.post('/submitScore', mid.requiresLogin, controllers.Score.submitScore);
     app.get('/getScores', mid.requiresLogin, controllers.Score.getUserScores);
     app.get('/leaderboard', controllers.Score.getLeaderboard);
+
+    app.post('/upgrade', mid.requiresLogin, controllers.Account.upgrade);
 
     app.get('/', mid.requiresSecure, mid.requiresLogout, controllers.Account.loginPage);
 };

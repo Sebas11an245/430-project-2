@@ -61,10 +61,24 @@ const appPage = (req, res) => {
   return res.render('app'); // loads app.handlebars
 };
 
+const getMe = (req, res) => {
+  res.json({
+    username: req.session.account.username,
+    premium: req.session.account.premium,
+  });
+};
+
+const upgrade = (req, res) => {
+    req.session.account.premium = true;
+    return res.json({ premium: true });
+}
+
 module.exports = {
     loginPage,
     login,
     logout,
     signup,
     appPage,
+    getMe,
+    upgrade,
 };

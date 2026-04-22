@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import Dashboard from './dashboard.jsx';
+import Leaderboard from './leaderboard.jsx';
 
 const App = () => {
+  const [page, setPage] = useState('home');
+
   return (
-    <div>
-      <h1>Daily Challenge Hub</h1>
-      <p>Welcome to your game dashboard</p>
-    </div>
+    <>
+      {page === 'home' && <Dashboard setPage={setPage} />}
+      {page === 'leaderboard' && <Leaderboard setPage={setPage} />}
+    </>
   );
 };
 

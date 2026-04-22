@@ -15,17 +15,17 @@ const ScoreSchema = new mongoose.Schema({
         type: Number,
         min: 0,
         required: true,
-    },
-}, {timestamps: true});
-
-ScoreSchema.index({ gameType: 1, score: -1 });
+    }, createdDate: {
+        type: Date,
+        default: Date.now,
+    }
+});
 
 ScoreSchema.statics.toAPI = (doc) => ({
     gameType: doc.gameType,
     score: doc.score,
-    createdAt: doc.createdAt,
-})
+});
 
 const ScoreModel = mongoose.model('Score', ScoreSchema);
 
-module.exports=ScoreModel;
+module.exports = ScoreModel;

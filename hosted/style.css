@@ -116,3 +116,175 @@ nav:nth-child(1) {
     color: red;
     font-style: italic;
 }
+
+
+.gridWrapper {
+  padding: 20px;
+  color: white;
+  background: #0f1117;
+  min-height: 80vh;
+}
+
+
+.gridHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.gridHeader h2 {
+  font-size: 24px;
+}
+
+
+.premiumBadge {
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+}
+
+.freeBadge {
+  background: #444;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+}
+
+
+.gameGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.gameCard {
+  position: relative;
+  background: #1a1d25;
+  border-radius: 12px;
+  padding: 16px;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+}
+
+.gameCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+
+.cardGlow {
+  position: absolute;
+  top: -50px;
+  left: -50px;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(100,150,255,0.2), transparent);
+  filter: blur(40px);
+  z-index: 0;
+}
+
+
+.gameCard h3,
+.gameCard p,
+.cardActions {
+  position: relative;
+  z-index: 1;
+}
+
+.gameDesc {
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+
+.playBtn {
+  background: #3a86ff;
+  border: none;
+  padding: 8px 12px;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.playBtn:hover {
+  background: #265df2;
+}
+
+.lockedBtn {
+  background: #333;
+  border: none;
+  padding: 8px 12px;
+  color: #aaa;
+  border-radius: 6px;
+  cursor: not-allowed;
+}
+
+
+.locked {
+  opacity: 0.85;
+}
+
+.lockOverlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0,0,0,0.7);
+  padding: 10px;
+  font-size: 12px;
+  text-align: center;
+}
+
+.leaderboardPage {
+  padding: 20px;
+  background: #0f1117;
+  color: white;
+  min-height: 80vh;
+}
+
+.leaderHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.leaderHeader select {
+  padding: 6px;
+  border-radius: 6px;
+}
+
+.leaderCard {
+  margin-top: 20px;
+  background: #1a1d25;
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.leaderList {
+  list-style: none;
+  padding: 0;
+}
+
+.leaderItem {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  border-bottom: 1px solid #333;
+}
+
+.rank {
+  width: 40px;
+  color: #888;
+}
+
+.name {
+  flex: 1;
+}
+
+.score {
+  font-weight: bold;
+  color: #3a86ff;
+}

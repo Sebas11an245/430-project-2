@@ -21,8 +21,12 @@ const submitScore = async (req, res) => {
 
     return res.status(201).json({
       message: 'Score submitted successfully!',
-      score: Score.toAPI(newScore),
+      score: {
+        gameType,
+        score,
+      },
     });
+
   } catch (err) {
     console.error(err);
     return res.status(500).json({ error: 'Error submitting score.' });
@@ -33,12 +37,17 @@ const submitScore = async (req, res) => {
 const getUserScores = async (req, res) => {
   try {
     const scores = await Score.find({ user: req.session.account._id })
-      .sort({ createdAt: -1 })
+      .sort({ createdDate: -1 }) // ✅ FIXED FIELD NAME
       .lean();
 
     return res.json({
-      scores: scores.map((doc) => Score.toAPI(doc)),
+      scores: scores.map(doc => ({
+        gameType: doc.gameType,
+        score: doc.score,
+        createdDate: doc.createdDate,
+      })),
     });
+
   } catch (err) {
     console.error(err);
     return res.status(500).json({ error: 'Error retrieving scores.' });
@@ -55,18 +64,19 @@ const getLeaderboard = async (req, res) => {
     }
 
     const topScores = await Score.find({ gameType })
-      .sort({ score: -1 })
+      .sort({ score: -1 }) // highest score first
       .limit(10)
-      .populate('user', 'username') // optional but nice
+      .populate('user', 'username')
       .lean();
 
     return res.json({
-      leaderboard: topScores.map((doc) => ({
+      leaderboard: topScores.map(doc => ({
         username: doc.user?.username || 'Unknown',
         score: doc.score,
-        createdAt: doc.createdAt,
+        createdAt: doc.createdDate,
       })),
     });
+
   } catch (err) {
     console.error(err);
     return res.status(500).json({ error: 'Error retrieving leaderboard.' });

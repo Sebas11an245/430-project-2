@@ -8,27 +8,43 @@
 </head>
 
 <body>
-  <nav><a href="/login"><img id="logo" src="/assets/img/controller.png" alt="controller logo" /></a>
-    <div class="navlink"><a href="/logout">Log out</a></div>
+  <nav class="mainNav">
+    <a href="/app">
+      <img id="logo" src="/assets/img/controller.png" alt="controller logo" />
+    </a>
+
+    <div class="navLinks">
+      <a href="/leaderboard">Leaderboard</a>
+
+      <button id="premiumBtn" class="premiumBtn">
+        Upgrade to Premium
+      </button>
+
+      <a href="/logout">Log out</a>
+    </div>
   </nav>
-  <section id="testPanel" style="padding: 10px; border-bottom: 2px solid #ccc;">
-    <h3>🧪 Backend Test Panel</h3>
 
-    <input id="gameType" placeholder="Game Type" />
-    <input id="score" type="number" placeholder="Score" />
-    <button onclick="submitScore()">Submit Score</button>
 
-    <button onclick="getScores()">Get My Scores</button>
+  <header class="dashboardHeader">
+    <h1 id="greeting">Welcome back!</h1>
+    <p id="subGreeting">Choose a game to start playing</p>
+  </header>
 
-    <input id="leaderGameType" placeholder="Leaderboard Game Type" />
-    <button onclick="getLeaderboard()">Get Leaderboard</button>
 
-    <pre id="output" style="background:#eee; padding:10px;"></pre>
-  </section>
+  <main id="app"></main>
 
-  <section id="app"></section>
-  <h3><span id="errorMessage" class='hidden'></span></h3>
+
+  <div class="errorWrapper">
+    <span id="errorMessage" class="hidden"></span>
   </div>
+
+
+  <footer class="bottomNav">
+    <a href="/app">Home</a>
+    <a href="/leaderboard">Leaderboard</a>
+    <a href="/logout">Logout</a>
+  </footer>
+
   <script src="/assets/appBundle.js"></script>
 </body>
 
