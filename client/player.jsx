@@ -30,7 +30,7 @@ const PlayerMain = () => {
         const btn = document.getElementById('premiumButton');
         if (btn) {
             btn.textContent = premium ? "Downgrade to Free" : "Upgrade to Premium";
-            btn.style.backgroundColor = premium ? "#df5a0d" : "#643173"; // Red for downgrade
+            btn.style.backgroundColor = premium ? "#df5a0d" : "#643173"; 
         }
     };
 
@@ -40,7 +40,6 @@ const PlayerMain = () => {
             premBtn.onclick = togglePremiumStatus;
         }
 
-        // Check initial status
         const checkStatus = async () => {
             const response = await fetch('/me');
             const data = await response.json();
@@ -164,7 +163,7 @@ const GameWindow = (props) => {
     const [timeLeft, setTimeLeft] = React.useState(60);
     const [plots, setPlots] = React.useState(Array(16).fill(null));
     const [hoveredIndex, setHoveredIndex] = React.useState(null);
-    const [gameState, setGameState] = React.useState('playing'); // 'playing' or 'ended'
+    const [gameState, setGameState] = React.useState('playing');  
 
     //Redactored keypress handling
     React.useEffect(() => {
@@ -186,7 +185,6 @@ const GameWindow = (props) => {
                         setPlots(newPlots);
 
                     } else {
-                        // Wrong Key: Lose a life
                         setLives(prevLives => prevLives - 1);
                     }
                 } else {

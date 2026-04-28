@@ -58,7 +58,7 @@ const signup = async (req, res) => {
     }
 };
 const appPage = (req, res) => {
-  return res.render('app'); // loads app.handlebars
+  return res.render('app'); 
 };
 
 const getMe = (req, res) => {
@@ -71,12 +71,10 @@ const getMe = (req, res) => {
 
 const upgrade = async (req, res) => {
     try {
-        // Find the account and update the premium flag
         const account = await Account.findOne({ _id: req.session.account._id });
         account.premium = true;
         await account.save();
 
-        // Update the session so the change is immediate
         req.session.account.premium = true;
         
         return res.json({ message: 'Upgraded successfully', premium: true });
@@ -136,7 +134,6 @@ const toggleAnon = async (req, res) => {
         account.anonymity = !account.anonymity;
         await account.save();
         
-        // Update session to reflect change
         req.session.account.anonymity = account.anonymity;
         
         return res.json({ anonymity: account.anonymity });

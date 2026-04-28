@@ -26,7 +26,6 @@ const saveScore = async (req, res) => {
 
 const getScores = async (req, res) => {
     try {
-        // Fetch top 10 scores globally for the leaderboard
         const docs = await Score.find().sort({ score: -1 }).limit(10).populate('owner').lean().exec();
 
         const processedScores = docs.map(doc => {
