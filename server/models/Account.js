@@ -37,6 +37,10 @@ const AccountSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
+  anonymity: {
+    type: Boolean,
+    default: false,
+},
   createdDate: {
     type: Date,
     default: Date.now,

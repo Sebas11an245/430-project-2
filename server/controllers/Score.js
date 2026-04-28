@@ -27,8 +27,16 @@ const saveScore = async (req, res) => {
 const getScores = async (req, res) => {
     try {
         // Fetch top 10 scores globally for the leaderboard
-        const docs = await Score.find().sort({ score: -1 }).limit(10).lean().exec();
-        return res.json({ scores: docs || []});
+        const docs = await Score.find().sort({ score: -1 }).limit(10).populate('owner').lean().exec();
+
+        const processedScores = docs.map(doc => {
+            if (doc.owner && doc.owner.anonymity) {
+                return { ...doc, username: 'Anonymous' };
+            }
+            return doc;
+        });
+
+        return res.json({ scores: processedScores || []});
     } catch (err) {
       console.log(err);
         return res.status(400).json({ error: 'Could not retrieve scores.' });
