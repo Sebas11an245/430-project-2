@@ -49,7 +49,7 @@ const signup = async (req, res) => {
         req.session.account = Account.toAPI(newAccount);
         return res.json({ redirect: '/player' });
     } catch (err) {
-        console.log(err);
+        console.error(err);
         if (err.code === 11000) {
             return res.status(400).json({ error: 'Username already in use!' });
         }
@@ -79,7 +79,7 @@ const upgrade = async (req, res) => {
         
         return res.json({ message: 'Upgraded successfully', premium: true });
     } catch (err) {
-        console.log(err);
+        console.error(err);
         return res.status(500).json({ error: 'Upgrade failed' });
     }
 }
@@ -92,7 +92,7 @@ const downgrade = async (req, res) => {
         req.session.account.premium = false;
         return res.json({ premium: false });
     } catch (err) {
-        console.log(err);
+        console.error(err);
         return res.status(500).json({ error: 'Downgrade failed' });
     }
 }
@@ -104,7 +104,7 @@ const changePassword = async (req, res) => {
         return res.status(400).json({ error: 'All fields are required' });
     }
 
-    if (newPass !== newPass2) {
+    if (newPass != newPass2) {
         return res.status(400).json({ error: 'New passwords do not match' });
     }
 
@@ -123,7 +123,7 @@ const changePassword = async (req, res) => {
             return res.json({ message: 'Password updated successfully!' });
         });
     } catch (err) {
-        console.log(err);
+        console.error(err);
         return res.status(500).json({ error: 'An error occurred' });
     }
 };
@@ -138,7 +138,7 @@ const toggleAnon = async (req, res) => {
         
         return res.json({ anonymity: account.anonymity });
     } catch (err) {
-        console.log(err);
+        console.error(err);
         return res.status(500).json({ error: 'Failed to toggle anonymity' });
     }
 };

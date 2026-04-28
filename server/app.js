@@ -14,7 +14,7 @@ const port = process.env.PORT || process.env.NODE_PORT || 3000;
 const dbURI = process.env.MONGODB_URI || 'mongodb://127.0.0.1/Player';
 mongoose.connect(dbURI).catch((err) => {
     if (err) {
-        console.log('Could not connect to database');
+        console.error('Could not connect to database');
         throw err;
     }
 });
@@ -23,7 +23,7 @@ const redisClient = redis.createClient({
     url: process.env.REDISCLOUD_URL,
 });
 
-redisClient.on('error', err => console.log('Redis Client Error', err));
+redisClient.on('error', err => console.error('Redis Client Error', err));
 
 redisClient.connect().then(() => {
     const app = express();
@@ -53,7 +53,7 @@ redisClient.connect().then(() => {
 
     app.listen(port, (err) => {
         if (err) { throw err; }
-        console.log(`Listening on port ${port}`);
+        console.error(`Listening on port ${port}`);
     });
 
 })

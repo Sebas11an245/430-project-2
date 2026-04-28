@@ -19,7 +19,7 @@ const saveScore = async (req, res) => {
         await newScore.save();
         return res.status(201).json({ message: 'Score saved!' });
     } catch (err) {
-      console.log(err);
+      console.error(err);
         return res.status(400).json({ error: 'Error saving score.' });
     }
 };
@@ -37,7 +37,7 @@ const getScores = async (req, res) => {
 
         return res.json({ scores: processedScores || []});
     } catch (err) {
-      console.log(err);
+      console.error(err);
         return res.status(400).json({ error: 'Could not retrieve scores.' });
     }
 };
