@@ -139,171 +139,104 @@ nav {
   font-style: italic;
 }
 
-
-.gridWrapper {
-  padding: 20px;
-  color: white;
-  background: #333333;
-  min-height: 80vh;
+/* --- Dashboard & Premium Styles --- */
+.game-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 20px;
 }
 
-
-.gridHeader {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 20px;
+.game-card {
+    background: #fdfdfd;
+    border: 3px solid #444;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.2s;
 }
 
-.gridHeader h1 {
-  font-size: 2em;
+/* Premium Model: Locked Visuals */
+.game-card.locked {
+    filter: grayscale(100%);
+    opacity: 0.6;
+    background: #eee;
 }
 
-.userBadge {
-float: right;
+.premium-bar {
+    background: #444;
+    padding: 10px;
+    text-align: right;
 }
 
-.premiumBadge {
-  background: linear-gradient(135deg, #6a11cb, #2575fc);
-  padding: 6px 12px;
-  border-radius: 20px;
-  font-size: 12px;
+.premium-btn {
+    background: #ffd700;
+    border: 2px solid #b8860b;
+    font-weight: bold;
+    cursor: pointer;
 }
 
-.freeBadge {
-  background: #444;
-  padding: 6px 12px;
-  border-radius: 20px;
-  font-size: 12px;
+/* --- Game Grid Styles (Retained from main) --- */
+#garden-grid {
+   display: grid;
+    grid-template-columns: repeat(4, 100px); /* 4 columns */
+    grid-template-rows: repeat(4, 100px);    /* 4 rows */
+    gap: 10px;
+    margin: 20px auto;
 }
 
-
-.gameGrid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 64px;
+.plot {
+    width: 100px;
+    height: 100px;
+    background-color: #654321; /* Brown dirt */
+    border: 2px solid #333;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* Highlight the plot currently being hovered */
+.plot.hovered {
+    border-color: yellow;
+    box-shadow: 0 0 10px yellow;
 }
 
-.gameCard {
-  position: relative;
-  background: #86a59c;
-  border-radius: 12px;
-  padding: 16px;
-  overflow: hidden;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  cursor: pointer;
+.plant-wrapper {
+    width: 100%;
+    height: 100%;
+    position: relative;
 }
 
-.gameCard:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+.plant-img {
+    width: 80px;  /* Explicit size */
+    height: 80px; /* Explicit size */
+    object-fit: contain;
+    display: block;
+    margin: 10px auto;
 }
 
-.gameCard h3 {
-  font-size: 2em;
+.bubble {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    border: 1px solid black;
+    padding: 2px 5px;
+    font-size: 10px;
+    white-space: nowrap;
+    border-radius: 5px;
+    z-index: 10;
 }
 
-
-.gameCard h3,
-.gameCard p,
-.cardActions {
-  position: relative;
-  z-index: 1;
-}
-
-.gameDesc {
-  font-size: 1.25em;
-  opacity: 0.7;
-}
-
-
-.playBtn {
-  background: #9ad5a4;
-  border: none;
-  padding: 8px 12px;
-  color: white;
-  font-size: 1.25em;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-.playBtn:hover {
-  background: #7ec98a;
-}
-
-.lockedBtn {
-  background: #333;
-  border: none;
-  padding: 8px 12px;
-  color: #aaa;
-  border-radius: 6px;
-  cursor: not-allowed;
-}
-
-
-.locked {
-  opacity: 0.85;
-}
-
-.lockOverlay {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: rgba(0, 0, 0, 0.7);
-  padding: 10px;
-  font-size: 12px;
-  text-align: center;
-}
-
-.leaderboardPage {
-  padding: 20px;
-  background: #0f1117;
-  color: white;
-  min-height: 80vh;
-}
-
-.leaderHeader {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.leaderHeader select {
-  padding: 6px;
-  border-radius: 6px;
-}
-
-.leaderCard {
-  margin-top: 20px;
-  background: #1a1d25;
-  padding: 20px;
-  border-radius: 12px;
-}
-
-.leaderList {
-  list-style: none;
-  padding: 0;
-}
-
-.leaderItem {
-  display: flex;
-  justify-content: space-between;
-  padding: 10px;
-  border-bottom: 1px solid #333;
-}
-
-.rank {
-  width: 40px;
-  color: #888;
-}
-
-.name {
-  flex: 1;
-}
-
-.score {
-  font-weight: bold;
-  color: #3a86ff;
+.overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 50px;
+    border: 5px solid #444;
+    text-align: center;
+    z-index: 100;
 }

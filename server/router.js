@@ -8,15 +8,12 @@ const router = (app) => {
     app.post('/signup', mid.requiresSecure, mid.requiresLogout, controllers.Account.signup);
     app.get('/logout', mid.requiresLogin, controllers.Account.logout);
 
-    app.get('/app', mid.requiresLogin, controllers.Account.appPage);
+    app.get('/player', mid.requiresLogin, controllers.Account.appPage);
 
     app.get('/me', mid.requiresLogin, controllers.Account.getMe);
     
-    app.get('/games', mid.requiresLogin, controllers.Game.getGames);
-
-    app.post('/submitScore', mid.requiresLogin, controllers.Score.submitScore);
-    app.get('/getScores', mid.requiresLogin, controllers.Score.getUserScores);
-    app.get('/leaderboard', controllers.Score.getLeaderboard);
+    app.post('/submitScore', mid.requiresLogin, controllers.Score.saveScore);
+    app.get('/getScores', mid.requiresLogin, controllers.Score.getScores);
 
     app.post('/upgrade', mid.requiresLogin, controllers.Account.upgrade);
     app.post('/downgrade', mid.requiresLogin, controllers.Account.downgrade);

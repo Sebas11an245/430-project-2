@@ -10,11 +10,11 @@
 <body>
   
 
-
   <header class="dashboardHeader">
     
   </header>
 
+<input type="hidden" id="_csrf" name="_csrf" value="{{csrfToken}}" />
 
   <main id="app"></main>
 
@@ -24,14 +24,14 @@
   </div>
 
 
-<nav><a href="/app"><img id="logo" src="/assets/img/controller.png" alt="controller logo"/></a>
+<nav><a href="/player"><img id="logo" src="/assets/img/controller.png" alt="controller logo"/></a>
     <div class="navlink"><a id="logoutButton" href="/logout">Log Out</a></div>
     <div class="navlink"><a id="leaderboardButton" href="/leaderboard">Leaderboard</a></div>
     <div class="navlink"><button id="premiumButton" href="/upgrade">
         Upgrade to Premium
       </button></div>
   </nav>
-  <script src="/assets/appBundle.js"></script>
+  <script src="/assets/playerBundle.js"></script>
 </body>
 
 </html>

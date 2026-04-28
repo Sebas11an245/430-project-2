@@ -17,6 +17,11 @@ const sendPost = async (url, data, handler) => {
     body: JSON.stringify(data),
   });
 
+  if(!response.ok) {
+     const errorText = await response.text(); 
+     console.error("Server Error:", errorText);
+     return alert("Error: Route not found on server.");
+  }
   const result = await response.json();
 
   const errorEl = document.getElementById('errorMessage');

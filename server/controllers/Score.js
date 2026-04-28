@@ -3,88 +3,40 @@ const models = require('../models');
 const Score = models.Score;
 
 
-const submitScore = async (req, res) => {
-  try {
-    const { gameType, score } = req.body;
-
-    if (!gameType || score === undefined) {
-      return res.status(400).json({ error: 'Game type and score are required.' });
+const saveScore = async (req, res) => {
+    if (req.body.score === undefined) {
+        return res.status(400).json({ error: 'Score is required.' });
     }
 
-    const newScore = new Score({
-      user: req.session.account._id,
-      gameType,
-      score,
-    });
+    const scoreData = {
+        username: req.session.account.username,
+        score: req.body.score,
+        owner: req.session.account._id,
+    };
 
-    await newScore.save();
-
-    return res.status(201).json({
-      message: 'Score submitted successfully!',
-      score: {
-        gameType,
-        score,
-      },
-    });
-
-  } catch (err) {
-    console.error(err);
-    return res.status(500).json({ error: 'Error submitting score.' });
-  }
-};
-
-
-const getUserScores = async (req, res) => {
-  try {
-    const scores = await Score.find({ user: req.session.account._id })
-      .sort({ createdDate: -1 }) // ✅ FIXED FIELD NAME
-      .lean();
-
-    return res.json({
-      scores: scores.map(doc => ({
-        gameType: doc.gameType,
-        score: doc.score,
-        createdDate: doc.createdDate,
-      })),
-    });
-
-  } catch (err) {
-    console.error(err);
-    return res.status(500).json({ error: 'Error retrieving scores.' });
-  }
-};
-
-
-const getLeaderboard = async (req, res) => {
-  try {
-    const { gameType } = req.query;
-
-    if (!gameType) {
-      return res.status(400).json({ error: 'Game type is required.' });
+    try {
+        const newScore = new Score(scoreData);
+        await newScore.save();
+        return res.status(201).json({ message: 'Score saved!' });
+    } catch (err) {
+      console.log(err);
+        return res.status(400).json({ error: 'Error saving score.' });
     }
-
-    const topScores = await Score.find({ gameType })
-      .sort({ score: -1 }) // highest score first
-      .limit(10)
-      .populate('user', 'username')
-      .lean();
-
-    return res.json({
-      leaderboard: topScores.map(doc => ({
-        username: doc.user?.username || 'Unknown',
-        score: doc.score,
-        createdAt: doc.createdDate,
-      })),
-    });
-
-  } catch (err) {
-    console.error(err);
-    return res.status(500).json({ error: 'Error retrieving leaderboard.' });
-  }
 };
+
+const getScores = async (req, res) => {
+    try {
+        // Fetch top 10 scores globally for the leaderboard
+        const docs = await Score.find().sort({ score: -1 }).limit(10).lean().exec();
+        return res.json({ scores: docs || []});
+    } catch (err) {
+      console.log(err);
+        return res.status(400).json({ error: 'Could not retrieve scores.' });
+    }
+};
+
 
 module.exports = {
-  submitScore,
-  getUserScores,
-  getLeaderboard,
+  saveScore,
+  getScores
 };

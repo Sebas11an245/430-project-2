@@ -1,12 +1,7 @@
 const mongoose = require('mongoose');
 
 const ScoreSchema = new mongoose.Schema({
-    user: {
-        type: mongoose.Schema.Types.ObjectId,
-        required: true,
-        ref: 'Account',
-    },
-    gameType: {
+    username: {
         type: String,
         required: true,
         trim: true,
@@ -15,6 +10,10 @@ const ScoreSchema = new mongoose.Schema({
         type: Number,
         min: 0,
         required: true,
+    }, owner: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: 'Account',
     }, createdDate: {
         type: Date,
         default: Date.now,
@@ -22,7 +21,7 @@ const ScoreSchema = new mongoose.Schema({
 });
 
 ScoreSchema.statics.toAPI = (doc) => ({
-    gameType: doc.gameType,
+    username: doc.username,
     score: doc.score,
 });
 
